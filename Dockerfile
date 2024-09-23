@@ -5,6 +5,7 @@ SHELL ["/bin/bash", "-c"]
 RUN apt update \
     && apt install -y net-tools \
                       build-essential \
+                      procps \
     # gvm
     && apt install -y \
                       bsdmainutils \
