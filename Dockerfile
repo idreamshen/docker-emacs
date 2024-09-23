@@ -7,4 +7,6 @@ RUN apt update \
                       build-essential \
                       bsdmainutils \
                       bison \
-    && bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+    && bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) && \
+    gvm install go1.22.7 && \
+    gvm use go1.22.7 --default
