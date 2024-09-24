@@ -22,4 +22,4 @@ RUN curl -L 'https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64
     && chmod +x /usr/bin/ttyd
 
 EXPOSE 22 7681    
-CMD emacs --daemon && ttyd -t macOptionIsMeta=true -T xterm-direct -W TERM=xterm-direct emacsclient -nw
+CMD emacs --daemon && ttyd -t macOptionIsMeta=true -T xterm-direct -W emacsclient -nw
