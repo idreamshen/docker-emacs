@@ -15,5 +15,5 @@ RUN apt update \
     && gvm install go1.22.7 -B \
     && gvm use go1.22.7 --default
 
-RUN curl -o /usr/bin/ttyd 'https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64' \
+RUN curl -L 'https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64' -o /usr/bin/ttyd \
     && chmod +x /usr/bin/ttyd
