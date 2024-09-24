@@ -21,6 +21,9 @@ RUN apt update \
     && apt install -y locales \
     && locale-gen en_US.UTF-8
 
+ENV LC_CTYPE="en_US.UTF-8"
+ENV LANG="en_US.UTF-8"
+
 RUN curl -L 'https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64' -o /usr/bin/ttyd \
     && chmod +x /usr/bin/ttyd
 
