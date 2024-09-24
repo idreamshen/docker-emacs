@@ -21,8 +21,5 @@ RUN apt update \
 RUN curl -L 'https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64' -o /usr/bin/ttyd \
     && chmod +x /usr/bin/ttyd
 
-COPY terminfo-24bit.src /root/terminfo-24bit.src
-RUN tic -x -o /root/.terminfo /root/terminfo-24bit.src
-
 EXPOSE 22 7681    
-CMD emacs --daemon && ttyd -t macOptionIsMeta=true -T xterm-24bit -W bash
+CMD emacs --daemon && ttyd -t macOptionIsMeta=true -T xterm-direct -W TERM=xterm-direct emacsclient -nw
