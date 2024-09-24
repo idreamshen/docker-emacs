@@ -8,6 +8,7 @@ RUN apt update \
                       procps \
                       iputils-ping \
                       dnsutils \
+                      openssh-server \
     # gvm
     && apt install -y \
                       bsdmainutils \
@@ -20,4 +21,5 @@ RUN apt update \
 RUN curl -L 'https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64' -o /usr/bin/ttyd \
     && chmod +x /usr/bin/ttyd
 
+EXPOSE 22 7681    
 CMD emacs --daemon && ttyd -W bash
