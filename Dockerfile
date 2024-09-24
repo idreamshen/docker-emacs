@@ -19,3 +19,5 @@ RUN apt update \
 
 RUN curl -L 'https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64' -o /usr/bin/ttyd \
     && chmod +x /usr/bin/ttyd
+
+CMD emacs --daemon && ttyd -W bash
