@@ -6,6 +6,8 @@ RUN apt update \
     && apt install -y net-tools \
                       build-essential \
                       procps \
+                      ifconfig \
+                      dnsutils \
     # gvm
     && apt install -y \
                       bsdmainutils \
