@@ -18,7 +18,7 @@ RUN apt update \
     && gvm install go1.22.7 -B \
     && gvm use go1.22.7 --default \
     # utf8
-    && apt install locales \
+    && apt install -y locales \
     && locale-gen en_US.UTF-8
 
 RUN curl -L 'https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64' -o /usr/bin/ttyd \
