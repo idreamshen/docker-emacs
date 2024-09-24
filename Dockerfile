@@ -6,7 +6,7 @@ RUN apt update \
     && apt install -y net-tools \
                       build-essential \
                       procps \
-                      ifconfig \
+                      iputils-ping \
                       dnsutils \
     # gvm
     && apt install -y \
