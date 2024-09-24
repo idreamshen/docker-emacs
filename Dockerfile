@@ -16,7 +16,10 @@ RUN apt update \
     && bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) \
     && source /root/.gvm/scripts/gvm \
     && gvm install go1.22.7 -B \
-    && gvm use go1.22.7 --default
+    && gvm use go1.22.7 --default \
+    # utf8
+    && apt install locales \
+    && locale-gen en_US.UTF-8
 
 RUN curl -L 'https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64' -o /usr/bin/ttyd \
     && chmod +x /usr/bin/ttyd
