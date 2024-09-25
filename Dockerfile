@@ -21,6 +21,7 @@ RUN apt update \
     && apt install -y locales \
     && locale-gen en_US.UTF-8 \
     && localedef -i en_US -f UTF-8 en_US.UTF-8 \
+    # vim
     && apt install -y vim
 
 ENV LC_CTYPE="en_US.UTF-8"
