@@ -22,7 +22,11 @@ RUN apt update \
     && locale-gen en_US.UTF-8 \
     && localedef -i en_US -f UTF-8 en_US.UTF-8 \
     # vim
-    && apt install -y vim
+    && apt install -y vim \
+    # gopls
+    && go install golang.org/x/tools/gopls@latest \
+    # goimports
+    && go install golang.org/x/tools/cmd/goimports@latest
 
 ENV LC_CTYPE="en_US.UTF-8"
 ENV LANG="en_US.UTF-8"
