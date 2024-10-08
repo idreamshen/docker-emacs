@@ -26,7 +26,12 @@ RUN apt update \
     # gopls
     && go install golang.org/x/tools/gopls@latest \
     # goimports
-    && go install golang.org/x/tools/cmd/goimports@latest
+    && go install golang.org/x/tools/cmd/goimports@latest \
+    # esp-idf
+    && apt-get install -y git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 \
+    && mkdir -p /root/esp && cd /root/esp && git clone -b v5.3.1 --recursive https://github.com/espressif/esp-idf.git \
+    && cd /root/esp/esp-idf && ./install.sh all
+
 
 ENV LC_CTYPE="en_US.UTF-8"
 ENV LANG="en_US.UTF-8"
