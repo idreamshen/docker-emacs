@@ -27,13 +27,11 @@ RUN apt update \
 RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) \
     && source /root/.gvm/scripts/gvm \
     && gvm install go1.22.7 -B \
-    && gvm use go1.22.7 --default
-
-# gopls
-RUN go install golang.org/x/tools/gopls@latest
-
-# goimports
-RUN go install golang.org/x/tools/cmd/goimports@latest
+    && gvm use go1.22.7 --default \
+    # gopls
+    && go install golang.org/x/tools/gopls@latest \
+    # goimports
+    && go install golang.org/x/tools/cmd/goimports@latest
 
 # esp-idf
 RUN mkdir -p /root/esp && cd /root/esp && git clone -b v5.3.1 --recursive https://github.com/espressif/esp-idf.git \
