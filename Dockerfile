@@ -36,7 +36,9 @@ RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/
 # esp-idf
 RUN mkdir -p /root/esp && cd /root/esp && git clone -b v5.3.1 --recursive https://github.com/espressif/esp-idf.git \
     && cd /root/esp/esp-idf && ./install.sh all \
-    && echo -e "alias get_idf='. $HOME/esp/esp-idf/export.sh'" >> /root/.bashrc
+    # && echo -e "alias get_idf='. $HOME/esp/esp-idf/export.sh'" >> /root/.bashrc \
+    && echo -e "source /root/esp/esp-idf/export.sh" >> /root/.bashrc \
+
 
 ENV LC_CTYPE="en_US.UTF-8"
 ENV LANG="en_US.UTF-8"
