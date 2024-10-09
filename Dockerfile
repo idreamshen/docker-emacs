@@ -24,6 +24,9 @@ RUN apt update \
     && apt install -y git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 \
     # clangd clang
     && apt install -y clangd clang \
+    # hugo
+    && apt install -y hugo \ 
+    # clean apt
     && rm -rf /var/lib/apt/lists/*
 
 # gvm
