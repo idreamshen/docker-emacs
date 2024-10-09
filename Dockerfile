@@ -22,8 +22,8 @@ RUN apt update \
     && apt install -y vim \
     # esp-idf-dep
     && apt install -y git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 \
-    # clangd
-    && apt install -y clangd \
+    # clangd clang
+    && apt install -y clangd clang \
     && rm -rf /var/lib/apt/lists/*
 
 # gvm
