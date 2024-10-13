@@ -39,13 +39,15 @@ RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/
     # goimports
     && go install golang.org/x/tools/cmd/goimports@latest
 
+RUN mkdir -p /root/esp
+
 # esp-idf-5.3.1
-RUN mkdir -p /root/esp && cd /root/esp && git clone -b v5.3.1 --recursive https://github.com/espressif/esp-idf.git esp-idf-v5.3.1 \
+RUN cd /root/esp && git clone -b v5.3.1 --recursive https://github.com/espressif/esp-idf.git esp-idf-v5.3.1 \
     && cd /root/esp/esp-idf-v5.3.1 && ./install.sh all \
     && echo -e "alias get_idf_v5.3.1='. $HOME/esp/esp-idf-v5.3.1/export.sh'" >> /root/.bashrc
     
 # esp-idf-4.4.4
-RUN mkdir -p /root/esp && cd /root/esp && git clone -b v4.4.4 --recursive https://github.com/espressif/esp-idf.git esp-idf-v4.4.4 \
+RUN cd /root/esp && git clone -b v4.4.4 --recursive https://github.com/espressif/esp-idf.git esp-idf-v4.4.4 \
     && cd /root/esp/esp-idf-v4.4.4 && ./install.sh all \
     && echo -e "alias get_idf_v4.4.4='. $HOME/esp/esp-idf-v4.4.4/export.sh'" >> /root/.bashrc
 
