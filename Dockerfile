@@ -46,11 +46,6 @@ RUN cd /root/esp && git clone -b v5.3.1 --recursive https://github.com/espressif
     && cd /root/esp/esp-idf-v5.3.1 && ./install.sh all \
     && echo -e "alias get_idf_v5.3.1='. $HOME/esp/esp-idf-v5.3.1/export.sh'" >> /root/.bashrc
     
-# esp-idf-4.4.4
-RUN cd /root/esp && git clone -b v4.4.4 --recursive https://github.com/espressif/esp-idf.git esp-idf-v4.4.4 \
-    && cd /root/esp/esp-idf-v4.4.4 && ./install.sh all \
-    && echo -e "alias get_idf_v4.4.4='. $HOME/esp/esp-idf-v4.4.4/export.sh'" >> /root/.bashrc
-
 ENV LC_CTYPE="en_US.UTF-8"
 ENV LANG="en_US.UTF-8"
 
@@ -58,4 +53,4 @@ RUN curl -L 'https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64
     && chmod +x /usr/bin/ttyd
 
 EXPOSE 22 7681    
-CMD bash -ic "emacs --daemon && ttyd -w /root -t macOptionIsMeta=true -T xterm-direct -W bash"
+CMD bash -ic "source /root/esp/esp-idf-v5.3.1/export.sh && emacs --daemon && ttyd -w /root -t macOptionIsMeta=true -T xterm-direct -W bash"
