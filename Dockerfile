@@ -27,7 +27,11 @@ RUN apt update \
     # hugo
     && apt install -y hugo \ 
     # clean apt
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    # nodejs
+    && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash \
+    && nvm install 22
+
 
 # gvm
 RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) \
