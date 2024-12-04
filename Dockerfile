@@ -54,6 +54,9 @@ RUN cd /root/esp && git clone -b v4.4.7 --recursive https://github.com/espressif
 RUN cd /root/esp && git clone -b v5.3.1 --recursive https://github.com/espressif/esp-idf.git esp-idf-v5.3.1 \
     && cd /root/esp/esp-idf-v5.3.1 && ./install.sh all \
     && echo -e "alias get_idf_v5.3.1='. $HOME/esp/esp-idf-v5.3.1/export.sh'" >> /root/.bashrc
+
+# vue-language-server
+RUN npm install -g @vue/language-server
     
 ENV LC_CTYPE="en_US.UTF-8"
 ENV LANG="en_US.UTF-8"
