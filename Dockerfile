@@ -43,6 +43,10 @@ RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/
     # goimports
     && go install golang.org/x/tools/cmd/goimports@latest
 
+# aider
+RUN python -m pip install aider-install \
+    && aider-install
+
 RUN mkdir -p /root/esp
 
 # esp-idf-4.4.7
