@@ -44,7 +44,7 @@ RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/
     && go install golang.org/x/tools/cmd/goimports@latest
 
 # aider
-RUN curl -LsSf https://aider.chat/install.sh | sh
+RUN apt update && curl -LsSf https://aider.chat/install.sh | sh
 
 RUN mkdir -p /root/esp
 
