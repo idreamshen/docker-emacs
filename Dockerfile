@@ -30,8 +30,7 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists/* \
     # nodejs
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash \
-    && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 22 \
-    && apt install -y gawk
+    && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 22
 
 # gvm
 RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) \
@@ -42,6 +41,8 @@ RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/
     && go install golang.org/x/tools/gopls@latest \
     # goimports
     && go install golang.org/x/tools/cmd/goimports@latest
+
+RUN apt update && apt install -y gawk
 
 # aider
 RUN apt update && echo 1 && curl -LsSf https://aider.chat/install.sh | sh
