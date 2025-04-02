@@ -44,8 +44,11 @@ RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/
 
 RUN apt update && apt install -y gawk
 
+# ledger
+RUN apt update && apt install -y ledger
+
 # aider
-RUN apt update && echo 1 && curl -LsSf https://aider.chat/install.sh | sh
+RUN apt update && echo 2 && curl -LsSf https://aider.chat/install.sh | sh
 
 RUN mkdir -p /root/esp
 
