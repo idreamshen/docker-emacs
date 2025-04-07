@@ -32,9 +32,6 @@ RUN apt update \
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash \
     && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 22
 
-# lsp-bridge python dependencies
-RUN apt update && pip3 install epc orjson sexpdata six setuptools paramiko rapidfuzz watchdog packaging
-
 # gvm
 RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) \
     && source /root/.gvm/scripts/gvm \
@@ -70,12 +67,6 @@ RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.
     
 # vscode-langservers-extracted
 RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && npm install -g vscode-langservers-extracted
-
-# typescript-language-server
-RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && npm install -g typescript-language-server typescript
-
-# @vue/language-server
-RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && npm install -g @vue/language-server
 
 ENV LC_CTYPE="en_US.UTF-8"
 ENV LANG="en_US.UTF-8"
