@@ -68,6 +68,12 @@ RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.
 # vscode-langservers-extracted
 RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && npm install -g vscode-langservers-extracted
 
+# typescript-language-server
+RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && npm install -g typescript-language-server typescript
+
+# @vue/language-server
+RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && npm install -g @vue/language-server
+
 ENV LC_CTYPE="en_US.UTF-8"
 ENV LANG="en_US.UTF-8"
 
