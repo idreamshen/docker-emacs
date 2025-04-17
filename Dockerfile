@@ -48,7 +48,7 @@ RUN apt update && apt install -y gawk
 RUN apt update && apt install -y ledger
 
 # aider
-RUN apt update && echo 2 && curl -LsSf https://aider.chat/install.sh | sh
+RUN apt update && echo 3 && curl -LsSf https://aider.chat/install.sh | sh
 
 RUN mkdir -p /root/esp
 
