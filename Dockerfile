@@ -20,8 +20,6 @@ RUN apt update \
     && localedef -i en_US -f UTF-8 en_US.UTF-8 \
     # vim
     && apt install -y vim \
-    # esp-idf-dep
-    && apt install -y git wget flex bison gperf python3 python3-pip python3-venv python3-virtualenv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 \
     # clangd clang
     && apt install -y clangd clang \
     # hugo
@@ -55,18 +53,6 @@ RUN apt update && apt install -y ledger
 # aider
 RUN apt update && echo 3 && curl -LsSf https://aider.chat/install.sh | sh
 
-RUN mkdir -p /root/esp
-
-# esp-idf-4.4.7
-RUN cd /root/esp && git clone -b v4.4.7 --recursive https://github.com/espressif/esp-idf.git esp-idf-v4.4.7 \
-    && cd /root/esp/esp-idf-v4.4.7 && ./install.sh all \
-    && echo -e "alias get_idf_v4.4.7='. $HOME/esp/esp-idf-v4.4.7/export.sh'" >> /root/.bashrc
-
-# esp-idf-5.3.1
-RUN cd /root/esp && git clone -b v5.3.1 --recursive https://github.com/espressif/esp-idf.git esp-idf-v5.3.1 \
-    && cd /root/esp/esp-idf-v5.3.1 && ./install.sh all \
-    && echo -e "alias get_idf_v5.3.1='. $HOME/esp/esp-idf-v5.3.1/export.sh'" >> /root/.bashrc
-
 # vue-language-server
 RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && npm install -g @vue/language-server
     
@@ -80,4 +66,4 @@ RUN curl -L 'https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64
     && chmod +x /usr/bin/ttyd
 
 EXPOSE 22 7681    
-CMD bash -ic "source /root/esp/esp-idf-v5.3.1/export.sh && emacs --daemon && ttyd -w /root -t macOptionIsMeta=true -T xterm-direct -W bash"
+CMD bash -ic "emacs --daemon && ttyd -w /root -t macOptionIsMeta=true -T xterm-direct -W bash"
