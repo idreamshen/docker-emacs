@@ -38,8 +38,8 @@ RUN apt-get update && apt-get install -y curl \
 # gvm
 RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) \
     && source /root/.gvm/scripts/gvm \
-    && gvm install go1.22.7 -B \
-    && gvm use go1.22.7 --default \
+    && gvm install go1.23.9 -B \
+    && gvm use go1.23.9 --default \
     # gopls
     && go install golang.org/x/tools/gopls@latest \
     # goimports
