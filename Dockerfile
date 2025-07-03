@@ -28,7 +28,7 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists/* \
     # nodejs
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash \
-    && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 22 
+    && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 22 && nvm install 16.20.2
 
 # kubectl    
 RUN apt-get update && apt-get install -y curl \
