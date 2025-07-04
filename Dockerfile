@@ -25,7 +25,11 @@ RUN apt update \
     # hugo
     && apt install -y hugo \ 
     # pip3
-    && apt install -y python3-pip \
+    && apt install -y python3-pip python3-venv \
+    && python3 -m venv ~/.local/lsp-bridge-env \
+    && source ~/.local/lsp-bridge-env/bin/activate \
+    && pip3 install epc orjson sexpdata six setuptools paramiko rapidfuzz watchdog packaging \
+    && deactivate \
     # clean apt
     && rm -rf /var/lib/apt/lists/* \
     # nodejs
