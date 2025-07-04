@@ -24,15 +24,14 @@ RUN apt update \
     && apt install -y clangd clang \
     # hugo
     && apt install -y hugo \ 
-    # lsp-bridge deps
+    # pip3
     && apt install -y python3-pip \
-    && pip3 install epc orjson sexpdata six setuptools paramiko rapidfuzz watchdog packaging \
     # clean apt
     && rm -rf /var/lib/apt/lists/* \
     # nodejs
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash \
-    && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 22 && nvm install 16.20.2
-    
+    && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 22 && nvm install 16.20.2 \
+    && nvm use 16.20.2 && npm install -g yarn
 
 # kubectl    
 RUN apt-get update && apt-get install -y curl \
