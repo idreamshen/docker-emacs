@@ -58,7 +58,7 @@ RUN apt update && apt install -y gawk
 RUN apt update && apt install -y ledger
 
 # aider
-RUN apt update && echo 3 && curl -LsSf https://aider.chat/install.sh | sh
+RUN apt update && echo 4 && curl -LsSf https://aider.chat/install.sh | sh
 
 # vue-language-server
 RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && npm install -g @vue/language-server
