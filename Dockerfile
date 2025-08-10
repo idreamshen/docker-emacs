@@ -35,7 +35,8 @@ RUN apt update \
     # nodejs
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash \
     && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 22 && nvm install 16.20.2 \
-    && nvm alias default 16.20.2 && nvm use 16.20.2 && npm install -g yarn
+    # && nvm alias default 16.20.2 && nvm use 16.20.2 && npm install -g yarn
+    && nvm alias default 22 && nvm use 22 && npm install -g yarn && npm install -g @anthropic-ai/claude-code && npm install -g @musistudio/claude-code-router
 
 # kubectl    
 RUN apt-get update && apt-get install -y curl \
