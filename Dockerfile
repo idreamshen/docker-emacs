@@ -10,6 +10,7 @@ RUN apt update \
                       iputils-ping \
                       dnsutils \
                       openssh-server \
+                      sudo \
     # gvm-dep
     && apt install -y \
                       bsdmainutils \
@@ -37,6 +38,16 @@ RUN apt update \
     && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 24 && nvm install 16.20.2 \
     # && nvm alias default 16.20.2 && nvm use 16.20.2 && npm install -g yarn 
     && nvm alias default 24 && nvm use 24 && npm install -g yarn && npm install -g @anthropic-ai/claude-code && npm install -g @musistudio/claude-code-router@1.0.33
+    # github cli
+    && (type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
+	&& sudo mkdir -p -m 755 /etc/apt/keyrings \
+	&& out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+	&& cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+	&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+	&& sudo mkdir -p -m 755 /etc/apt/sources.list.d \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install gh -y
 
 # kubectl    
 RUN apt-get update && apt-get install -y curl \
