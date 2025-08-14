@@ -37,7 +37,7 @@ RUN apt update \
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash \
     && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 24 && nvm install 16.20.2 \
     # && nvm alias default 16.20.2 && nvm use 16.20.2 && npm install -g yarn 
-    && nvm alias default 24 && nvm use 24 && npm install -g yarn && npm install -g @anthropic-ai/claude-code && npm install -g @musistudio/claude-code-router@1.0.33
+    && nvm alias default 24 && nvm use 24 && npm install -g yarn && npm install -g @anthropic-ai/claude-code && npm install -g @musistudio/claude-code-router@1.0.33 \
     # github cli
     && (type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
 	&& sudo mkdir -p -m 755 /etc/apt/keyrings \
