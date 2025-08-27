@@ -52,7 +52,9 @@ RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/
     # gopls
     && go install golang.org/x/tools/gopls@latest \
     # goimports
-    && go install golang.org/x/tools/cmd/goimports@latest
+    && go install golang.org/x/tools/cmd/goimports@latest \
+    # mockgen
+    && go install go.uber.org/mock/mockgen@latest
 
 RUN apt update && apt install -y gawk
 
