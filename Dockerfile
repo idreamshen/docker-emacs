@@ -10,7 +10,6 @@ RUN apt update \
                       iputils-ping \
                       dnsutils \
                       openssh-server \
-                      sudo \
     # gvm-dep
     && apt install -y \
                       bsdmainutils \
