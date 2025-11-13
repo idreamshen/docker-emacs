@@ -37,10 +37,11 @@ RUN apt update \
     && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 24 && nvm install 16.20.2 \
     # && nvm alias default 16.20.2 && nvm use 16.20.2 && npm install -g yarn 
     && nvm alias default 24 && nvm use 24 && npm install -g yarn \
-    && npm install -g @anthropic-ai/claude-code@2.0.22 \
+    && npm install -g @anthropic-ai/claude-code@2.0.37 \
     && npm install -g @musistudio/claude-code-router@1.0.63 \
-    && npm install -g npm install -g @openai/codex@0.47.0 \
-    && npm install -g pnpm
+    && npm install -g @openai/codex@0.57.0 \
+    && npm install -g pnpm \
+    && npm install -g @github/copilot
 
 # kubectl    
 RUN apt-get update && apt-get install -y curl \
