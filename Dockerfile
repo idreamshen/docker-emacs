@@ -41,7 +41,7 @@ RUN apt update \
     && npm install -g @musistudio/claude-code-router@1.0.63 \
     && npm install -g @openai/codex@0.57.0 \
     && npm install -g pnpm \
-    && npm install -g @github/copilot
+    && npm install -g @github/copilot@0.0.365
 
 # kubectl    
 RUN apt-get update && apt-get install -y curl \
