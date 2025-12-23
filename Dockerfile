@@ -48,6 +48,22 @@ RUN apt-get update && apt-get install -y curl \
   && curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" \
   && chmod +x kubectl && mv kubectl /usr/local/bin/
 
+# --- sshd runtime requirements ---
+RUN apt update && apt install -y supervisor \
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /var/run/sshd \
+    # 生成 host keys（有些镜像不会自动生成）
+    && ssh-keygen -A \
+    # 安全：禁用密码登录，只允许 key
+    && sed -ri 's/^#?PasswordAuthentication\s+.*/PasswordAuthentication no/' /etc/ssh/sshd_config \
+    && sed -ri 's/^#?KbdInteractiveAuthentication\s+.*/KbdInteractiveAuthentication no/' /etc/ssh/sshd_config || true \
+    # 允许 root 用 key 登（不允许 root 密码登）
+    && sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config \
+    # 可选：更严格一点，完全禁用 PAM（某些环境会少掉 pam 依赖导致登陆怪问题）
+    && sed -ri 's/^#?UsePAM\s+.*/UsePAM no/' /etc/ssh/sshd_config || true
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 # gvm
 RUN bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) \
     && source /root/.gvm/scripts/gvm \
